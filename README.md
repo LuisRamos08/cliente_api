@@ -8,6 +8,7 @@ Fue una API desarrollada como prueba tecnica de OrionTek.
 ## Se utilizó:
 
 - Spring Boot
+- Maven
 - OpenApi UI - Swagger
 - H2 (Como gestor de base de datos en memoria)
 - Lombok 
