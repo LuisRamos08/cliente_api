@@ -1,18 +1,20 @@
 package com.luis.ramos.cliente_api.model;
 
 import com.luis.ramos.cliente_api.model.dto.ClienteDto;
+import com.luis.ramos.cliente_api.model.dto.DireccionDto;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Entity
 @Table(name = "Cliente")
 public class Cliente {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cliente_id;
 
     private String nombre;
@@ -40,6 +42,9 @@ public class Cliente {
         cliente.setApellido(clienteDto.getApellido());
         cliente.setEdad(clienteDto.getEdad());
         cliente.setTelefono(clienteDto.getTelefono());
+        cliente.setDirecciones(clienteDto.getDireccionesDto().stream()
+                                    .map(Direccion::transferir)
+                                    .collect(Collectors.toList()));
         return cliente;
     }
 

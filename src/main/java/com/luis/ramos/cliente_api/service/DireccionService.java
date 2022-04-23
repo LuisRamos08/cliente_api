@@ -21,7 +21,7 @@ public class DireccionService {
         this.direccionRepository = direccionRepository;
     }
 
-    public Direccion agregarDireccion(Direccion direccion){
+    public Direccion guardarDireccion(Direccion direccion){
         return direccionRepository.save(direccion);
     }
 

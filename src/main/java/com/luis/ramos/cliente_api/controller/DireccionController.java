@@ -22,32 +22,32 @@ public class DireccionController {
         this.direccionService = direccionService;
     }
 
-    @PostMapping
+    @PostMapping(value = "/guardar")
     public ResponseEntity<DireccionDto> guardarDireccion(@RequestBody final DireccionDto direccionDto){
-        Direccion direccion = direccionService.agregarDireccion(Direccion.transferir(direccionDto));
+        Direccion direccion = direccionService.guardarDireccion(Direccion.transferir(direccionDto));
         return new ResponseEntity<>(DireccionDto.transferir(direccion), HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping(value = "/buscarTodas")
     public ResponseEntity<List<DireccionDto>> buscarDirecciones(){
         List<Direccion> direcciones = direccionService.buscarDirecciones();
         List<DireccionDto> direccionesDto = direcciones.stream().map(DireccionDto::transferir).collect(Collectors.toList());
         return new ResponseEntity<>(direccionesDto, HttpStatus.OK);
     }
 
-    @GetMapping(value = "{id}")
+    @GetMapping(value = "/buscar/{id}")
     public ResponseEntity<DireccionDto> buscarDireccion(@PathVariable final Long id){
         Direccion direccion = direccionService.buscarDireccion(id);
         return new ResponseEntity<>(DireccionDto.transferir(direccion), HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "{id}")
+    @DeleteMapping(value = "/eliminar/{id}")
     public ResponseEntity<DireccionDto> eliminarDireccion(@PathVariable final Long id){
         Direccion direccion = direccionService.eliminarDireccion(id);
         return new ResponseEntity<>(DireccionDto.transferir(direccion), HttpStatus.OK);
     }
 
-    @PutMapping(value = "{id}")
+    @PutMapping(value = "/modificar/{id}")
     public ResponseEntity<DireccionDto> modificarDireccion(@PathVariable final Long id,
                                                            @RequestBody final DireccionDto direccionDto){
         Direccion direccionModificada = direccionService.modificarDireccion(id,Direccion.transferir(direccionDto));

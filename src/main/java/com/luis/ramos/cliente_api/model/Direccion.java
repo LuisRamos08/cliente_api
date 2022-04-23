@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Table(name = "Direccion")
 public class Direccion {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int direccion_id;
 
     private String descripcion;
@@ -19,6 +19,10 @@ public class Direccion {
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+
+    public Direccion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
     public Direccion() {
     }
