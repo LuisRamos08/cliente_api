@@ -1,7 +1,7 @@
 
 ## Cliente Api
 
-Fue una API desarrollada como prueba tecnica de OrionTek.
+REST-API desarrollada en Spring Boot.
 
 
 
